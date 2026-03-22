@@ -3,145 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İlgi Anaokulu | Manisa</title>
+    <title>İlgi Anaokulu Manisa</title>
     <style>
-        :root {
-            --primary: #ff9f43;
-            --secondary: #1dd1a1;
-            --dark: #2d3436;
-            --light: #fdfbf7;
-        }
+        :root { --p: #ff9f43; --s: #1dd1a1; --t: #2d3436; }
+        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Comic Sans MS', cursive, sans-serif; }
+        body { background: #fffcf9; color: var(--t); }
+        
+        header { background: white; padding: 15px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        header h1 { color: var(--p); font-size: 24px; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: var(--light); color: var(--dark); }
-
-        header {
-            background: white;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo-box { display: flex; align-items: center; gap: 12px; }
-        .logo-box img { height: 50px; border-radius: 50%; border: 2px solid var(--primary); }
-        .logo-box h1 { font-size: 22px; color: var(--primary); }
-
-        .hero {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, #fff5eb 0%, #edfff9 100%);
-        }
-
-        .hero h2 { font-size: 32px; margin-bottom: 10px; }
-
-        /* GALERİ TASARIMI */
-        .galeri-section {
-            padding: 50px 5%;
-            max-width: 1200px;
+        .hero { padding: 40px 20px; text-align: center; background: #fff5eb; }
+        
+        /* FOTOĞRAF GALERİSİ */
+        .galeri {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
-        .galeri-baslik {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .instagram-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            justify-items: center;
-        }
-
-        /* Instagram embed çerçevelerini güzelleştirelim */
-        .ig-card {
+        .foto-kart {
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            width: 100%;
-            max-width: 350px;
-        }
-
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .btn-ig {
-            display: inline-block;
-            background: #e1306c;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 3px solid white;
             transition: 0.3s;
         }
 
-        .btn-ig:hover { transform: scale(1.05); background: #c13584; }
+        .foto-kart:hover { transform: scale(1.02); border-color: var(--s); }
 
-        @media (max-width: 768px) {
-            header { flex-direction: column; gap: 10px; }
-            .hero h2 { font-size: 24px; }
+        .foto-kart img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover; /* Fotoğrafı kutuya tam sığdırır */
+            display: block;
+        }
+
+        .footer { background: var(--t); color: white; padding: 30px; text-align: center; margin-top: 40px; }
+        .btn { 
+            display: inline-block; background: #e1306c; color: white; 
+            padding: 10px 20px; border-radius: 20px; text-decoration: none; margin-top: 15px;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo-box">
-        <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="Logo">
-        <h1>İlgi Anaokulu Manisa</h1>
-    </div>
-    <nav>
-        <a href="https://www.instagram.com/ilgianaokulumanisa/" target="_blank" class="btn-ig" style="margin-top:0; font-size: 14px; padding: 8px 15px;">Takip Et</a>
-    </nav>
+    <h1>🌟 İlgi Anaokulu Manisa 🌟</h1>
 </header>
 
 <section class="hero">
-    <h2>Eğitimde İlgi, Gelecekte Başarı 🌟</h2>
-    <p>Manisa'nın en renkli ve sevgi dolu anaokulu sayfamıza hoş geldiniz.</p>
+    <h2>Okulumuzdan En Güzel Kareler</h2>
+    <p>Çocuklarımızın mutlu anlarını paylaşıyoruz.</p>
 </section>
 
-<section class="galeri-section">
-    <div class="galeri-baslik">
-        <h3>Etkinliklerimizden Kareler</h3>
-        <p>Instagram'da en son paylaştığımız anılar</p>
+<div class="galeri">
+    <div class="foto-kart">
+        <img src="okul1.jpg" alt="İlgi Anaokulu Etkinlik 1">
     </div>
-
-    <div class="instagram-grid">
-        <div class="ig-card">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DWB9cmEl8CU/" data-instgrm-version="14"></blockquote>
-        </div>
-
-        <div class="ig-card">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DWB9BYYl8ig/" data-instgrm-version="14"></blockquote>
-        </div>
-
-        <div class="ig-card">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DV_YBRul49j/" data-instgrm-version="14"></blockquote>
-        </div>
+    <div class="foto-kart">
+        <img src="okul2.jpg" alt="İlgi Anaokulu Etkinlik 2">
     </div>
-</section>
+    <div class="foto-kart)
+        <img src="okul3.jpg" alt="İlgi Anaokulu Etkinlik 3">
+    </div>
+</div>
 
-<script async src="//www.instagram.com/embed.js"></script>
-
-<footer>
-    <p>📍 Manisa Merkez</p>
-    <p>Bizi Instagram'da takip etmeyi unutmayın!</p>
-    <a href="https://www.instagram.com/ilgianaokulumanisa/" target="_blank" class="btn-ig">@ilgianaokulumanisa</a>
-    <p style="margin-top: 30px; font-size: 12px; opacity: 0.5;">© 2026 İlgi Anaokulu. Tüm hakları saklıdır.</p>
-</footer>
+<div class="footer">
+    <p>Daha fazlası için Instagram sayfamızı ziyaret edin:</p>
+    <a href="https://www.instagram.com/ilgianaokulumanisa/" target="_blank" class="btn">Instagram'a Git</a>
+    <p style="margin-top:20px; font-size: 12px; opacity:0.6;">© 2026 İlgi Anaokulu</p>
+</div>
 
 </body>
 </html>
