@@ -3,80 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İlgi Anaokulu Manisa</title>
+    <title>İlgi Anaokulu Manisa | Mutlu Çocukların Adresi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --p: #ff9f43; --s: #1dd1a1; --t: #2d3436; }
-        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Comic Sans MS', cursive, sans-serif; }
-        body { background: #fffcf9; color: var(--t); }
+        :root { --p: #ff9f43; --s: #1dd1a1; --t: #2d3436; --bg: #fffcf9; }
+        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background: var(--bg); color: var(--t); scroll-behavior: smooth; }
         
-        header { background: white; padding: 15px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        header h1 { color: var(--p); font-size: 24px; }
+        /* Navigasyon */
+        header { background: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top:0; z-index:1000; }
+        .logo { color: var(--p); font-size: 24px; font-weight: bold; text-decoration: none; display: flex; align-items: center; gap: 10px; }
 
-        .hero { padding: 40px 20px; text-align: center; background: #fff5eb; }
-        
-        /* FOTOĞRAF GALERİSİ */
-        .galeri {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            max-width: 1100px;
-            margin: 0 auto;
+        /* Hero */
+        .hero { text-align:center; padding: 100px 20px; background: linear-gradient(135deg, rgba(255,159,67,0.1) 0%, rgba(29,209,161,0.1) 100%); }
+        .hero h1 { font-size: 45px; margin-bottom: 20px; color: var(--t); }
+        .hero p { font-size: 20px; max-width: 800px; margin: 0 auto 30px; opacity: 0.9; }
+
+        /* Özellikler */
+        .features { display: flex; flex-wrap: wrap; gap: 20px; padding: 80px 5%; background: white; justify-content: center; }
+        .f-card { background: var(--bg); padding: 40px 30px; border-radius: 30px; width: 320px; text-align: center; transition: 0.4s; border: 1px solid #eee; }
+        .f-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+        .f-card i { font-size: 45px; color: var(--p); margin-bottom: 20px; }
+
+        /* Galeri */
+        .galeri { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding: 60px 5%; }
+        .foto-kart { border-radius: 20px; overflow: hidden; position: relative; height: 300px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .foto-kart img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .foto-kart:hover img { transform: scale(1.1); }
+
+        /* WhatsApp Sabit Buton */
+        .whatsapp-btn {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #25d366; color: white; width: 65px; height: 65px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 35px; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); z-index: 9999;
+            text-decoration: none; transition: 0.3s;
         }
+        .whatsapp-btn:hover { transform: scale(1.15); }
 
-        .foto-kart {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border: 3px solid white;
-            transition: 0.3s;
-        }
+        /* İletişim Bölümü */
+        .contact-section { padding: 80px 5%; text-align: center; background: white; }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px; }
 
-        .foto-kart:hover { transform: scale(1.02); border-color: var(--s); }
+        .footer { background: var(--t); color: white; padding: 60px 20px; text-align: center; }
+        .btn { background: var(--p); color: white; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s; }
+        .btn:hover { background: #e88e32; box-shadow: 0 5px 15px rgba(255,159,67,0.4); }
 
-        .foto-kart img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover; /* Fotoğrafı kutuya tam sığdırır */
-            display: block;
-        }
-
-        .footer { background: var(--t); color: white; padding: 30px; text-align: center; margin-top: 40px; }
-        .btn { 
-            display: inline-block; background: #e1306c; color: white; 
-            padding: 10px 20px; border-radius: 20px; text-decoration: none; margin-top: 15px;
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            header { flex-direction: column; gap: 15px; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>🌟 İlgi Anaokulu Manisa 🌟</h1>
+    <a href="#" class="logo">🎨 İLGİ ANAOKULU</a>
+    <div style="display: flex; gap: 20px; align-items: center;">
+        <a href="#galeri" style="text-decoration:none; color:var(--t); font-weight:500;">Galeri</a>
+        <a href="https://www.instagram.com/ilgianaokulumanisa/" target="_blank" style="color: #e1306c; text-decoration: none; font-size: 20px;"><i class="fab fa-instagram"></i></a>
+    </div>
 </header>
 
 <section class="hero">
-    <h2>Okulumuzdan En Güzel Kareler</h2>
-    <p>Çocuklarımızın mutlu anlarını paylaşıyoruz.</p>
+    <h1>Gelecek "İlgi"yle Başlar 🌈</h1>
+    <p>Manisa'da çocuklarımızın güvenle sosyalleştiği, her gün yeni bir şeyler keşfettiği renkli dünyamıza davetlisiniz.</p>
+    <a href="https://bit.ly/2L5Oty5" target="_blank" class="btn"><i class="fab fa-whatsapp"></i> Hemen Bilgi Alın</a>
 </section>
 
-<div class="galeri">
-    <div class="foto-kart">
-        <img src="okul1.jpg" alt="İlgi Anaokulu Etkinlik 1">
+<section class="features">
+    <div class="f-card">
+        <i class="fas fa-child"></i>
+        <h3>Uzman Kadro</h3>
+        <p>Çocuk gelişimi mezunu, tecrübeli ve güler yüzlü eğitmen kadrosu.</p>
     </div>
-    <div class="foto-kart">
-        <img src="okul2.jpg" alt="İlgi Anaokulu Etkinlik 2">
+    <div class="f-card">
+        <i class="fas fa-utensils"></i>
+        <h3>Doğal Beslenme</h3>
+        <p>Kendi mutfağımızda, en taze malzemelerle hazırlanan günlük öğünler.</p>
     </div>
-    <div class="foto-kart)
-        <img src="okul3.jpg" alt="İlgi Anaokulu Etkinlik 3">
+    <div class="f-card">
+        <i class="fas fa-gamepad"></i>
+        <h3>Eğitici Oyunlar</h3>
+        <p>Robotik kodlamadan sanata, zeka oyunlarından spora geniş aktivite yelpazesi.</p>
     </div>
+</section>
+
+<div class="galeri" id="galeri">
+    <div class="foto-kart"><img src="okul1.jpg" alt="Okul Etkinlik"></div>
+    <div class="foto-kart"><img src="okul2.jpg" alt="Okul Bahçe"></div>
+    <div class="foto-kart"><img src="okul3.jpg" alt="Okul Sınıf"></div>
 </div>
 
-<div class="footer">
-    <p>Daha fazlası için Instagram sayfamızı ziyaret edin:</p>
-    <a href="https://www.instagram.com/ilgianaokulumanisa/" target="_blank" class="btn">Instagram'a Git</a>
-    <p style="margin-top:20px; font-size: 12px; opacity:0.6;">© 2026 İlgi Anaokulu</p>
-</div>
+<section class="contact-section">
+    <h2>Bize Ulaşın</h2>
+    <div class="contact-grid">
+        <div style="text-align: left; padding: 20px;">
+            <h3 style="margin-bottom: 20px; color: var(--p);">İletişim Bilgileri</h3>
+            <p style="margin-bottom: 10px;"><i class="fas fa-map-marker-alt" style="color: var(--s);"></i> Manisa Merkez, Türkiye</p>
+            <p style="margin-bottom: 10px;"><i class="fas fa-phone" style="color: var(--s);"></i> Kayıt Hattı: 05xx xxx xx xx</p>
+            <p style="margin-bottom: 20px;"><i class="fab fa-whatsapp" style="color: var(--s);"></i> WhatsApp: Destek Hattı</p>
+            <a href="https://bit.ly/2L5Oty5" target="_blank" class="btn" style="background: var(--s);">Yol Tarifi Al</a>
+        </div>
+        <div style="background: #eee; border-radius: 20px; height: 300px; display: flex; align-items: center; justify-content: center; color: #888;">
+            <p><i class="fas fa-map-marked-alt"></i> Harita Yakında Buraya Gelecek</p>
+        </div>
+    </div>
+</section>
+
+<a href="https://bit.ly/2L5Oty5" class="whatsapp-btn" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<footer class="footer">
+    <div style="margin-bottom: 20px;">
+        <a href="https://www.instagram.com/ilgianaokulumanisa/" target="_blank" style="color:white; font-size: 30px; margin: 0 15px;"><i class="fab fa-instagram"></i></a>
+        <a href="https://bit.ly/2L5Oty5" target="_blank" style="color:white; font-size: 30px; margin: 0 15px;"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <p>© 2026 İlgi Anaokulu Manisa. Tüm Hakları Saklıdır.</p>
+    <p style="font-size: 11px; opacity: 0.4; margin-top: 20px;">Mutlu Çocuklar, Aydınlık Gelecekler.</p>
+</footer>
 
 </body>
 </html>
