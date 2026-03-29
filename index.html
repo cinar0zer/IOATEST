@@ -14,7 +14,7 @@
         header { background: white; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top:0; z-index:1000; }
         .logo-box { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--t); }
         
-        /* LOGO KODU - Bilgisayarındaki logonun adını logo.png yapıp yükle */
+        /* LOGO KODU */
         .logo-box img { 
             height: 60px; 
             border-radius: 50%; 
@@ -28,7 +28,7 @@
         .hero h1 { font-size: 45px; margin-bottom: 20px; color: var(--t); line-height: 1.1; }
         .hero p { font-size: 19px; max-width: 800px; margin: 0 auto 30px; opacity: 0.9; }
 
-        /* KURUMSAL VURGU KARTLARI (Maarİf Modelİ / Beyaz Bayrak) */
+        /* KURUMSAL VURGU KARTLARI */
         .kurumsal-section { display: flex; flex-wrap: wrap; gap: 25px; padding: 70px 5%; background: white; justify-content: center; }
         .kurumsal-card { background: var(--bg); padding: 40px 30px; border-radius: 30px; width: 340px; text-align: center; border: 2px solid #f0f0f0; transition: 0.3s; position: relative; overflow: hidden; }
         .kurumsal-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); border-color: var(--p); }
@@ -36,6 +36,27 @@
         .kurumsal-card.bayrak i { color: var(--blue); }
         .kurumsal-card.marif i { color: var(--red); }
         
+        /* KAYIT BİLGİSİ STİLİ (Yeni Eklenen) */
+        .kayit-section { padding: 60px 5%; background: white; text-align: center; }
+        .kayit-kutu { 
+            max-width: 600px; 
+            margin: 0 auto; 
+            padding: 40px; 
+            border: 3px dashed var(--p); 
+            border-radius: 30px; 
+            background: var(--bg);
+            transition: 0.3s;
+        }
+        .kayit-kutu:hover { transform: scale(1.02); border-style: solid; }
+        .kayit-no { 
+            font-size: 32px; 
+            font-weight: bold; 
+            color: var(--t); 
+            display: block; 
+            margin-top: 15px;
+            text-decoration: none;
+        }
+
         /* Galeri */
         .galeri { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; padding: 70px 5%; }
         .foto-kart { border-radius: 20px; overflow: hidden; height: 350px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); border: 4px solid white; transition: 0.3s; }
@@ -67,6 +88,7 @@
             .hero h1 { font-size: 32px; }
             header { flex-direction: column; gap: 15px; }
             .kurumsal-card { width: 100%; }
+            .kayit-no { font-size: 26px; }
         }
     </style>
 </head>
@@ -86,8 +108,8 @@
 
 <section class="hero">
     <h1>Mutlu Çocuklar,<br>Aydınlık Gelecekler 🌟</h1>
-    <p>Manisa Özel İlgi Anaokulu'nda, çocuklarımızın her günü keşif, her adımı güven. Türkiye YüzyılıMaarİf Modelİ'ne uygun, sevgi dolu eğitim yuvamızda çocuklarımızı geleceğe hazırlıyoruz.</p>
-    <a href="https://api.whatsapp.com/send/?phone=905358610525&text=Merhabalar%2C%C4%B0nternetten+g%C3%B6rd%C3%BCm.+Anaokulunuzla+ilgili+daha+fazla+bilgi+almak+istiyorum.&type=phone_number&app_absent=0" target="_blank" class="btn">
+    <p>Manisa Özel İlgi Anaokulu'nda, çocuklarımızın her günü keşif, her adımı güven. Türkiye Yüzyılı Maarif Modeli'ne uygun, sevgi dolu eğitim yuvamızda çocuklarımızı geleceğe hazırlıyoruz.</p>
+    <a href="https://wa.me/905358610525" target="_blank" class="btn">
         <i class="fab fa-whatsapp"></i> Bilgi Alın
     </a>
 </section>
@@ -96,7 +118,7 @@
     <div class="kurumsal-card marif">
         <i class="fas fa-graduation-cap"></i>
         <h3>T.C. Yüzyılı<br>Maarif Modeli</h3>
-        <p>Geleceğin vizyoner nesillerini, yeni Maarİf Modelİ’ne tam uygun, bütüncül ve ahlak temelli bir eğitim anlayışıyla yetiştiriyoruz.</p>
+        <p>Geleceğin vizyoner nesillerini, yeni Maarif Modeli’ne tam uygun, bütüncül ve ahlak temelli bir eğitim anlayışıyla yetiştiriyoruz.</p>
     </div>
     <div class="kurumsal-card bayrak">
         <i class="fas fa-certificate"></i>
@@ -116,6 +138,17 @@
     <div class="foto-kart"><img src="okul3.jpg" alt="Anaokulu Sanat Atölyesi"></div>
 </div>
 
+<section class="kayit-section">
+    <div class="kayit-kutu">
+        <i class="fas fa-file-signature" style="font-size: 45px; color: var(--p); margin-bottom: 20px;"></i>
+        <h2 style="color:var(--p); font-size: 28px;">Kayıt İşlemleri</h2>
+        <p style="margin-top: 10px; line-height: 1.6;">2026-2027 Eğitim yılı kayıt süreci ve gerekli evraklar hakkında detaylı bilgi almak için bizi arayabilirsiniz:</p>
+        <a href="tel:05358610525" class="kayit-no">
+            <i class="fas fa-phone-alt"></i> 0535 861 05 25
+        </a>
+    </div>
+</section>
+
 <section class="contact-map-section" id="iletisim">
     <div style="padding: 20px;">
         <h2 style="font-size: 32px; color: var(--p); margin-bottom: 25px;">Konum Bilgimiz</h2>
@@ -125,32 +158,25 @@
             <a href="https://goo.gl/maps/c6oD6X4fQy9C85L39" target="_blank" class="btn" style="background: var(--s);">
                 <i class="fas fa-map-marked-alt"></i> Yol Tarifi Al
             </a>
-            <a href="https://api.whatsapp.com/send/?phone=905358610525&text=Merhabalar%2C%C4%B0nternetten+g%C3%B6rd%C3%BCm.+Anaokulunuzla+ilgili+daha+fazla+bilgi+almak+istiyorum.&type=phone_number&app_absent=0" target="_blank" class="btn" style="background:#25d366;">
+            <a href="https://wa.me/905358610525" target="_blank" class="btn" style="background:#25d366;">
                 <i class="fab fa-whatsapp"></i> WhatsApp'tan Yazın
             </a>
         </div>
     </div>
     <div class="map-wrapper">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3121.365311234567!2d27.420!3d38.625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDM3JzMwLjAiTiAyN8KwMjUnMTIuMCJF!5e0!3m2!1str!2str!4v1690000000000!5m2!1str!2str" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3121.3653139369446!2d27.424368915339243!3d38.611634979616015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDM2JzQxLjkiTiAyN8KwMjUnMzUuNiJF!5e0!3m2!1str!2str!4v1690000000000" allowfullscreen="" loading="lazy"></iframe>
     </div>
 </section>
 
 <footer class="footer">
     <div style="margin-bottom: 30px; display: flex; gap: 20px; justify-content: center; font-size: 25px;">
         <a href="https://www.instagram.com/ilgianaokulumanisa/" target="_blank" style="color:white;"><i class="fab fa-instagram"></i></a>
-        <a href="https://api.whatsapp.com/send/?phone=905358610525&text=Merhabalar%2C%C4%B0nternetten+g%C3%B6rd%C3%BCm.+Anaokulunuzla+ilgili+daha+fazla+bilgi+almak+istiyorum.&type=phone_number&app_absent=0" target="_blank" style="color:white;"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://wa.me/905358610525" target="_blank" style="color:white;"><i class="fab fa-whatsapp"></i></a>
     </div>
     <p style="font-size: 14px;">Ayni Ali Mah. 3307 Sk. No:29/A Yunusemre, Manisa</p>
     <p style="margin-top: 10px;">📞 0535 861 05 25</p>
-    <p style="margin-top: 40px; font-size: 11px; opacity: 0.5;">© 2026 Manisa Özel İlgi Anaokulu. Her Çocuk Bir Gelecektir.</p>
+    <p style="margin-top: 40px; font-size: 11px; opacity: 0.5;">© 2026 Manisa Özel İlgi Anaokulu.Çına®ForDesign</p>
 </footer>
-
-<a href="https://api.whatsapp.com/send/?phone=905358610525&text=Merhabalar%2C%C4%B0nternetten+g%C3%B6rd%C3%BCm.+Anaokulunuzla+ilgili+daha+fazla+bilgi+almak+istiyorum.&type=phone_number&app_absent=0" class="whatsapp-btn" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
-
-</body>
-</html>
 
 <div id="cerez-kutusu" style="position: fixed; bottom: 20px; left: 20px; right: 20px; background: #2d3436; color: white; padding: 20px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; z-index: 10000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); font-size: 14px; border: 1px solid #444;">
     <div style="padding-right: 20px;">
@@ -159,15 +185,19 @@
     <button onclick="cerezKabulEt()" style="background: #ff9f43; color: white; border: none; padding: 10px 25px; border-radius: 30px; cursor: pointer; font-weight: bold; white-space: nowrap;">Anladım</button>
 </div>
 
+<a href="https://wa.me/905358610525" class="whatsapp-btn" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
 <script>
-    // Çerez kabul edildi mi kontrol et
     if (localStorage.getItem('cerezOnay') === 'tamam') {
         document.getElementById('cerez-kutusu').style.display = 'none';
     }
-
-    // Butona basınca uyarısı kapat ve hatırla
     function cerezKabulEt() {
         localStorage.setItem('cerezOnay', 'tamam');
         document.getElementById('cerez-kutusu').style.display = 'none';
     }
 </script>
+
+</body>
+</html>
