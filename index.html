@@ -1,225 +1,413 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manisa Özel İlgi Anaokulu | Türkiye Yüzyılı Maarif Modeli</title>
+    <title>Çına®ForDesign | Creative Digital Studio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        :root { --p: #ff9f43; --s: #1dd1a1; --t: #2d3436; --bg: #fffcf9; --red: #e74c3c; --blue: #3498db; }
-        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background: var(--bg); color: var(--t); scroll-behavior: smooth; }
+        /* === PREMIUM COLOR PALETTE & VARIABLES === */
+        :root {
+            --bg-primary: #0a0a0f; /* Deep Space Black */
+            --bg-secondary: #12121a; /* Dark Blue-Grey */
+            --text-main: #f8f9fa; /* Off-White */
+            --text-muted: #a0a0ab; /* Cool Grey */
+            --accent-primary: #6366f1; /* Indigo */
+            --accent-secondary: #00e676; /* Neon Green (Your Signature) */
+            --gradient-text: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            --glass-bg: rgba(18, 18, 26, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.05);
+        }
+
+        /* === RESET & TYPOGRAPHY === */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--bg-primary); 
+            color: var(--text-main); 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -0.03em; }
+
+        /* === CUSTOM SELECTION === */
+        ::selection { background: var(--accent-primary); color: #fff; }
+
+        /* === ANIMATIONS === */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(99, 102, 241, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+        }
+        @keyframes rgb-border {
+            0% { border-color: #ff0000; box-shadow: 0 0 15px rgba(255,0,0,0.2); }
+            33% { border-color: #00ff00; box-shadow: 0 0 15px rgba(0,255,0,0.2); }
+            66% { border-color: #0000ff; box-shadow: 0 0 15px rgba(0,0,255,0.2); }
+            100% { border-color: #ff0000; box-shadow: 0 0 15px rgba(255,0,0,0.2); }
+        }
+
+        /* === NAVIGATION BAR (GLASSMORPHISM) === */
+        header {
+            position: fixed;
+            top: 0; width: 100%; z-index: 1000;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 20px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: all 0.3s ease;
+        }
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px; font-weight: 700;
+            color: var(--text-main); text-decoration: none;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .logo span {
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        nav { display: flex; gap: 30px; }
+        nav a {
+            color: var(--text-muted); text-decoration: none;
+            font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;
+            transition: color 0.3s ease; position: relative;
+        }
+        nav a:hover { color: var(--text-main); }
+        nav a::after {
+            content: ''; position: absolute; bottom: -5px; left: 0;
+            width: 0%; height: 2px; background: var(--accent-primary);
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after { width: 100%; }
+
+        .btn-primary {
+            background: var(--accent-primary); color: #fff;
+            padding: 10px 24px; border-radius: 30px; text-decoration: none;
+            font-weight: 600; font-size: 14px; transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px); box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            padding: 100px 5% 50px; position: relative; overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1) 0%, var(--bg-primary) 70%);
+        }
+        /* Abstract Background Elements */
+        .blob {
+            position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.5; z-index: 0;
+        }
+        .blob-1 { width: 400px; height: 400px; background: #6366f1; top: -100px; left: -100px; animation: float 10s ease-in-out infinite; }
+        .blob-2 { width: 300px; height: 300px; background: #ec4899; bottom: -50px; right: -50px; animation: float 8s ease-in-out infinite reverse; }
+
+        .hero-content {
+            text-align: center; max-width: 900px; z-index: 1; position: relative;
+        }
+        .hero-badge {
+            display: inline-block; padding: 8px 16px; border-radius: 20px;
+            background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
+            font-size: 12px; font-weight: 600; color: var(--accent-secondary);
+            margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase;
+        }
+        .hero h1 {
+            font-size: clamp(40px, 8vw, 80px); line-height: 1.1; margin-bottom: 24px;
+        }
+        .hero h1 span { display: block; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.3); }
+        .hero p {
+            font-size: clamp(16px, 2vw, 20px); color: var(--text-muted);
+            margin-bottom: 40px; max-width: 600px; margin-inline: auto; font-weight: 300;
+        }
+        .scroll-down {
+            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            color: var(--text-muted); font-size: 24px; animation: float 2s ease-in-out infinite;
+        }
+
+        /* === SERVICES SECTION === */
+        .services { padding: 120px 5%; background: var(--bg-secondary); }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-size: 40px; margin-bottom: 15px; }
+        .section-header p { color: var(--text-muted); font-size: 18px; max-width: 500px; margin: 0 auto; }
+
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;
+        }
+        .service-card {
+            background: var(--bg-primary); border: 1px solid var(--glass-border); border-radius: 20px;
+            padding: 40px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; overflow: hidden;
+        }
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(99,102,241,0.1) 0%, transparent 100%);
+            opacity: 0; transition: opacity 0.4s ease;
+        }
+        .service-card:hover { transform: translateY(-10px); border-color: rgba(99,102,241,0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .service-card:hover::before { opacity: 1; }
+        .service-icon {
+            width: 60px; height: 60px; border-radius: 15px; background: rgba(99,102,241,0.1);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; color: var(--accent-primary); margin-bottom: 25px;
+        }
+        .service-card h3 { font-size: 22px; margin-bottom: 15px; position: relative; z-index: 1; }
+        .service-card p { color: var(--text-muted); font-size: 15px; line-height: 1.7; position: relative; z-index: 1; }
+
+        /* === PORTFOLIO SECTION (Works) === */
+        .portfolio { padding: 120px 5%; }
+        .portfolio-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto;
+        }
+        .work-card {
+            border-radius: 20px; overflow: hidden; position: relative; group; cursor: pointer;
+        }
+        .work-img-wrapper {
+            width: 100%; height: 300px; background: var(--bg-secondary); overflow: hidden; position: relative;
+        }
+        /* Fallback patterns for portfolio items instead of images */
+        .pattern-1 { background: radial-gradient(circle at 10% 20%, rgb(90, 92, 106) 0%, rgb(32, 45, 58) 81.3%); }
+        .pattern-2 { background: linear-gradient(109.6deg, rgb(20, 30, 48) 11.2%, rgb(36, 59, 85) 91.1%); }
         
-        /* Navigasyon */
-        header { background: white; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top:0; z-index:1000; }
-        .logo-box { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--t); }
+        .work-img-wrapper img {
+            width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; filter: brightness(0.7) grayscale(0.5);
+        }
+        .work-card:hover .work-img-wrapper img { transform: scale(1.05); filter: brightness(1) grayscale(0); }
+        .work-info {
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px;
+            background: linear-gradient(to top, rgba(10,10,15,0.95) 0%, transparent 100%);
+            transform: translateY(20px); opacity: 0; transition: all 0.4s ease;
+        }
+        .work-card:hover .work-info { transform: translateY(0); opacity: 1; }
+        .work-category { color: var(--accent-primary); font-size: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 5px; display: block; }
+        .work-title { font-size: 24px; color: #fff; }
+
+        /* === ABOUT / EXPERTISE SECTION === */
+        .about { padding: 120px 5%; background: var(--bg-secondary); display: flex; align-items: center; justify-content: space-between; gap: 60px; max-width: 1200px; margin: 0 auto; }
+        .about-content { flex: 1; }
+        .about-content h2 { font-size: 40px; margin-bottom: 25px; }
+        .about-content p { color: var(--text-muted); font-size: 16px; margin-bottom: 30px; }
+        .skills { display: flex; flex-direction: column; gap: 20px; }
+        .skill-item { display: flex; flex-direction: column; gap: 8px; }
+        .skill-header { display: flex; justify-content: space-between; font-size: 14px; font-weight: 500; }
+        .skill-bar { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; }
+        .skill-progress { height: 100%; background: var(--gradient-text); border-radius: 10px; }
+
+        /* === CONTACT SECTION === */
+        .contact { padding: 120px 5%; text-align: center; position: relative; }
+        .contact::before {
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 100px; background: linear-gradient(to bottom, transparent, var(--glass-border), transparent);
+        }
+        .contact h2 { font-size: 50px; margin-bottom: 20px; }
+        .contact p { color: var(--text-muted); max-width: 500px; margin: 0 auto 50px; }
         
-        /* LOGO KODU */
-        .logo-box img { 
-            height: 60px; 
-            border-radius: 50%; 
-            border: 2px solid var(--p); 
-            object-fit: cover;
+        .contact-methods {
+            display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;
         }
-        .logo-box h1 { font-size: 20px; font-weight: bold; color: var(--p); line-height: 1.1; }
+        .contact-box {
+            padding: 40px; background: var(--bg-secondary); border: 1px solid var(--glass-border);
+            border-radius: 20px; min-width: 250px; transition: 0.3s; text-decoration: none; color: #fff;
+        }
+        .contact-box:hover { background: rgba(255,255,255,0.03); transform: translateY(-5px); }
+        .contact-box i { font-size: 32px; color: var(--accent-primary); margin-bottom: 15px; }
+        .contact-box h3 { font-size: 18px; margin-bottom: 5px; }
+        .contact-box span { color: var(--text-muted); font-size: 14px; }
 
-        /* Hero Bölümü */
-        .hero { text-align:center; padding: 120px 20px; background: linear-gradient(135deg, rgba(255,159,67,0.1) 0%, rgba(29,209,161,0.1) 100%); }
-        .hero h1 { font-size: 45px; margin-bottom: 20px; color: var(--t); line-height: 1.1; }
-        .hero p { font-size: 19px; max-width: 800px; margin: 0 auto 30px; opacity: 0.9; }
-
-        /* KURUMSAL VURGU KARTLARI */
-        .kurumsal-section { display: flex; flex-wrap: wrap; gap: 25px; padding: 70px 5%; background: white; justify-content: center; }
-        .kurumsal-card { background: var(--bg); padding: 40px 30px; border-radius: 30px; width: 340px; text-align: center; border: 2px solid #f0f0f0; transition: 0.3s; position: relative; overflow: hidden; }
-        .kurumsal-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); border-color: var(--p); }
-        .kurumsal-card i { font-size: 45px; color: var(--p); margin-bottom: 20px; }
-        .kurumsal-card.bayrak i { color: var(--blue); }
-        .kurumsal-card.marif i { color: var(--red); }
+        /* === FOOTER WITH RGB SIGNATURE === */
+        footer {
+            padding: 40px 5%; background: var(--bg-primary); border-top: 1px solid var(--glass-border);
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+        }
+        .footer-text { color: var(--text-muted); font-size: 14px; }
         
-        /* KAYIT BİLGİSİ STİLİ (Yeni Eklenen) */
-        .kayit-section { padding: 60px 5%; background: white; text-align: center; }
-        .kayit-kutu { 
-            max-width: 600px; 
-            margin: 0 auto; 
-            padding: 40px; 
-            border: 3px dashed var(--p); 
-            border-radius: 30px; 
-            background: var(--bg);
-            transition: 0.3s;
+        /* THE ULTIMATE RGB INSTAGRAM LOGO */
+        .rgb-signature {
+            display: flex; align-items: center; gap: 15px; text-decoration: none;
         }
-        .kayit-kutu:hover { transform: scale(1.02); border-style: solid; }
-        .kayit-no { 
-            font-size: 32px; 
-            font-weight: bold; 
-            color: var(--t); 
-            display: block; 
-            margin-top: 15px;
-            text-decoration: none;
+        .rgb-signature span { font-family: 'Space Grotesk', sans-serif; font-size: 12px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
+        .rgb-icon-wrapper {
+            width: 60px; height: 60px; border-radius: 50%; background: #000;
+            display: flex; align-items: center; justify-content: center;
+            animation: rgb-border 4s linear infinite; border: 2px solid #fff;
+            transition: transform 0.3s ease;
         }
+        .rgb-icon-wrapper:hover { transform: scale(1.1) rotate(5deg); }
+        .rgb-icon-wrapper i { font-size: 30px; color: #fff; }
 
-        /* Galeri */
-        .galeri { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; padding: 70px 5%; }
-        .foto-kart { border-radius: 20px; overflow: hidden; height: 350px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); border: 4px solid white; transition: 0.3s; }
-        .foto-kart:hover { transform: scale(1.03); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
-        .foto-kart img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* İletişim & Harita */
-        .contact-map-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; padding: 80px 5%; background: white; }
-        .map-wrapper { border-radius: 25px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.1); height: 400px; border: 5px solid white; }
-        .map-wrapper iframe { width: 100%; height: 100%; border:0; }
-
-        /* Sabit WhatsApp Butonu */
-        .whatsapp-btn {
-            position: fixed; bottom: 30px; right: 30px;
-            background: #25d366; color: white; width: 65px; height: 65px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 35px; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); z-index: 9999;
-            text-decoration: none; transition: 0.3s;
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 992px) {
+            .about { flex-direction: column; }
+            .hero h1 { font-size: 50px; }
         }
-        .whatsapp-btn:hover { transform: scale(1.1); }
-
-        /* Buton Stilleri */
-        .btn { background: var(--p); color: white; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s; }
-        .btn:hover { background: #e88e32; transform: translateY(-2px); }
-
-        .footer { background: var(--t); color: white; padding: 60px 20px; text-align: center; }
-
-        /* RGB LOGO ANİMASYONU VE BÜYÜTME (Senin İstediğin) */
-        @keyframes rgb-flow-strong {
-            0% { color: #ff0000; text-shadow: 0 0 10px rgba(255,0,0,0.5); }
-            33% { color: #00ff00; text-shadow: 0 0 10px rgba(0,255,0,0.5); }
-            66% { color: #0000ff; text-shadow: 0 0 10px rgba(0,0,255,0.5); }
-            100% { color: #ff0000; text-shadow: 0 0 10px rgba(255,0,0,0.5); }
-        }
-        .rgb-logo { 
-            animation: rgb-flow-strong 3s linear infinite; 
-            font-size: 35px !important; /* LOGO DEB GİBİ OLDU */
-            margin-left: 15px;
-            transition: 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .rgb-logo:hover { transform: scale(1.3) rotate(15deg); }
-        
         @media (max-width: 768px) {
-            .hero h1 { font-size: 32px; }
-            header { flex-direction: column; gap: 15px; }
-            .kurumsal-card { width: 100%; }
-            .kayit-no { font-size: 26px; }
+            nav { display: none; } /* Mobile menu toggle needed for full implementation */
+            header { justify-content: center; }
+            .hero h1 { font-size: 40px; }
+            .portfolio-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <a href="#" class="logo-box">
-        <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="Özel İlgi Anaokulu Logosu">
-        <h1>MANİSA<br>ÖZEL İLGİ ANAOKULU</h1>
-    </a>
-    <div style="display: flex; gap: 15px; align-items: center;">
-        <a href="#galeri" style="text-decoration:none; color:var(--t); font-weight:500;">Galeri</a>
-        <a href="#iletisim" style="text-decoration:none; color:var(--t); font-weight:500;">Konum</a>
-        <a href="https://www.instagram.com/ilgianaokulumanisa/" target="_blank" style="color: #e1306c; text-decoration: none; font-size: 20px;"><i class="fab fa-instagram"></i></a>
-    </div>
-</header>
-
-<section class="hero">
-    <h1>Mutlu Çocuklar,<br>Aydınlık Gelecekler 🌟</h1>
-    <p>Manisa Özel İlgi Anaokulu'nda, çocuklarımızın her günü keşif, her adımı güven. Türkiye Yüzyılı Maarif Modeli'ne uygun, sevgi dolu eğitim yuvamızda çocuklarımızı geleceğe hazırlıyoruz.</p>
-    <a href="https://wa.me/905358610525" target="_blank" class="btn">
-        <i class="fab fa-whatsapp"></i> Bilgi Alın
-    </a>
-</section>
-
-<section class="kurumsal-section">
-    <div class="kurumsal-card marif">
-        <i class="fas fa-graduation-cap"></i>
-        <h3>T.C. Yüzyılı<br>Maarif Modeli</h3>
-        <p>Geleceğin vizyoner nesillerini, yeni Maarif Modeli’ne tam uygun, bütüncül ve ahlak temelli bir eğitim anlayışıyla yetiştiriyoruz.</p>
-    </div>
-    <div class="kurumsal-card bayrak">
-        <i class="fas fa-certificate"></i>
-        <h3>Hijyen & Güven<br>Beyaz Bayraklı</h3>
-        <p>Önceliğimiz çocuklarımızın sağlığı. Hijyen standartlarımızın tescili olan 'Beyaz Bayrak' ile tam güvenli ve temiz bir ortam sunuyoruz.</p>
-    </div>
-    <div class="kurumsal-card">
-        <i class="fas fa-palette"></i>
-        <h3>Bütüncül<br>Gelişim</h3>
-        <p>Oyun temelli, modern pedagojik yaklaşımlarla çocuklarımızın sosyal, zihinsel ve fiziksel gelişimini destekliyoruz.</p>
-    </div>
-</section>
-
-<div class="galeri" id="galeri">
-    <div class="foto-kart"><img src="okul1.jpg" alt="Anaokulu Sınıf Etkinlik"></div>
-    <div class="foto-kart"><img src="okul2.jpg" alt="Anaokulu Bahçe Oyun"></div>
-    <div class="foto-kart"><img src="okul3.jpg" alt="Anaokulu Sanat Atölyesi"></div>
-</div>
-
-<section class="kayit-section">
-    <div class="kayit-kutu">
-        <i class="fas fa-file-signature" style="font-size: 45px; color: var(--p); margin-bottom: 20px;"></i>
-        <h2 style="color:var(--p); font-size: 28px;">Kayıt İşlemleri</h2>
-        <p style="margin-top: 10px; line-height: 1.6;">2026-2027 Eğitim yılı kayıt süreci ve gerekli evraklar hakkında detaylı bilgi almak için bizi arayabilirsiniz:</p>
-        <a href="tel:05358610525" class="kayit-no">
-            <i class="fas fa-phone-alt"></i> 0535 861 05 25
+    <header>
+        <a href="#" class="logo">
+            <i class="fas fa-layer-group" style="color: var(--accent-primary);"></i>
+            Çına®<span>ForDesign</span>
         </a>
-    </div>
-</section>
+        <nav>
+            <a href="#services">Expertise</a>
+            <a href="#work">Selected Works</a>
+            <a href="#about">Studio</a>
+        </nav>
+        <a href="#contact" class="btn-primary">Start a Project</a>
+    </header>
 
-<section class="contact-map-section" id="iletisim">
-    <div style="padding: 20px;">
-        <h2 style="font-size: 32px; color: var(--p); margin-bottom: 25px;">Konum Bilgimiz</h2>
-        <p style="font-size: 18px; margin-bottom: 20px;"><i class="fas fa-map-marker-alt" style="color: var(--s);"></i> Ayni Ali Mah. 3307 Sk. No:29/A Yunusemre, Manisa 45110</p>
-        <p style="font-size: 18px; margin-bottom: 30px;"><i class="fas fa-phone" style="color: var(--s);"></i> Kayıt Destek: 0535 861 05 25</p>
-        <div style="display: flex; gap: 20px;">
-            <a href="https://goo.gl/maps/c6oD6X4fQy9C85L39" target="_blank" class="btn" style="background: var(--s);">
-                <i class="fas fa-map-marked-alt"></i> Yol Tarifi Al
+    <section class="hero">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        
+        <div class="hero-content">
+            <div class="hero-badge">Creative Digital Studio</div>
+            <h1>
+                Designing digital
+                <span>experiences that</span>
+                actually matter.
+            </h1>
+            <p>Elevating brands through strategic design, high-end web development, and compelling digital narratives. Based in Turkey, working globally.</p>
+            <a href="#work" class="btn-primary" style="padding: 15px 35px; font-size: 16px;">Explore Portfolio</a>
+        </div>
+        
+        <a href="#services" class="scroll-down">
+            <i class="fas fa-arrow-down"></i>
+        </a>
+    </section>
+
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2>Core Expertise</h2>
+            <p>We blend aesthetics with functionality to deliver comprehensive digital solutions for modern brands.</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-code"></i></div>
+                <h3>Web Architecture</h3>
+                <p>Developing robust, scalable, and lightning-fast websites using modern frameworks. From institutional platforms like Özel İlgi Anaokulu to dynamic web applications.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-bezier-curve"></i></div>
+                <h3>UI/UX Design</h3>
+                <p>Crafting intuitive and engaging user interfaces that prioritize user experience without compromising on high-end visual aesthetics.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-hashtag"></i></div>
+                <h3>Digital Branding</h3>
+                <p>Establishing strong digital identities and social media strategies. Proven track record in managing organizational presence like Kirmasti Gençlik SK.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio" id="work">
+        <div class="section-header">
+            <h2>Selected Works</h2>
+            <p>A curated collection of recent projects showcasing our design philosophy and technical capabilities.</p>
+        </div>
+        
+        <div class="portfolio-grid">
+            <div class="work-card">
+                <div class="work-img-wrapper pattern-1">
+                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.1); font-size: 60px;">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                </div>
+                <div class="work-info">
+                    <span class="work-category">Web Development</span>
+                    <h3 class="work-title">Özel İlgi Institution</h3>
+                </div>
+            </div>
+            
+            <div class="work-card">
+                <div class="work-img-wrapper pattern-2">
+                     <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.1); font-size: 60px;">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+                <div class="work-info">
+                    <span class="work-category">Brand Identity</span>
+                    <h3 class="work-title">Kirmasti Gençlik SK</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-content">
+            <h2>The Architect Behind The Code</h2>
+            <p>Founded by Çınar Çağan Özer, Çına®ForDesign is built on the premise that exceptional design is a synthesis of art and logic. Despite being at the beginning of the academic journey, the studio operates with the precision and vision of seasoned industry professionals.</p>
+            <p>Every line of code and every pixel is meticulously crafted to ensure the final product not only looks premium but performs flawlessly across all devices.</p>
+        </div>
+        
+        <div class="skills" style="flex: 1; width: 100%;">
+            <div class="skill-item">
+                <div class="skill-header"><span>Frontend Development (HTML/CSS/JS)</span> <span>95%</span></div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header"><span>UI/UX & Interface Design</span> <span>88%</span></div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header"><span>Brand Strategy & Social Media</span> <span>92%</span></div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 92%;"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Let's build something extraordinary.</h2>
+        <p>Currently accepting new projects for Q3 2026. Reach out to discuss your vision, requirements, and how we can bring it to life.</p>
+        
+        <div class="contact-methods">
+            <a href="mailto:hello@cinarfordesign.com" class="contact-box">
+                <i class="far fa-envelope"></i>
+                <h3>Email</h3>
+                <span>hello@cinarfordesign.com</span>
             </a>
-            <a href="https://wa.me/905358610525" target="_blank" class="btn" style="background:#25d366;">
-                <i class="fab fa-whatsapp"></i> WhatsApp'tan Yazın
+            
+            <a href="https://www.instagram.com/cagansozers/" target="_blank" class="contact-box">
+                <i class="fab fa-instagram"></i>
+                <h3>Direct Message</h3>
+                <span>@cagansozers</span>
             </a>
         </div>
-    </div>
-    <div class="map-wrapper">
-        <iframe src="http://googleusercontent.com/maps.google.com/4" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-</section>
+    </section>
 
-<footer class="footer">
-    <div style="margin-bottom: 30px; display: flex; gap: 20px; justify-content: center; font-size: 25px;">
-        <a href="https://www.instagram.com/ilgianaokulumanisa/" target="_blank" style="color:white;"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/905358610525" target="_blank" style="color:white;"><i class="fab fa-whatsapp"></i></a>
-    </div>
-    <p style="font-size: 14px;">Ayni Ali Mah. 3307 Sk. No:29/A Yunusemre, Manisa</p>
-    <p style="margin-top: 10px;">📞 0535 861 05 25</p>
-    <p style="margin-top: 40px; font-size: 11px; opacity: 0.5; display: flex; align-items: center; justify-content: center;">
-        © 2026 Manisa Özel İlgi Anaokulu. Çına®ForDesign 
-        <a href="https://www.instagram.com/cagansozers/" target="_blank" class="rgb-logo">
-            <i class="fab fa-instagram"></i>
+    <footer>
+        <div class="footer-text">
+            © 2026 Çına®ForDesign Studio. All rights reserved. <br>
+            <span style="opacity: 0.5; font-size: 12px;">Operating globally from Bursa & Manisa, TR.</span>
+        </div>
+        
+        <a href="https://www.instagram.com/cagansozers/" target="_blank" class="rgb-signature">
+            <span>Connect on Instagram</span>
+            <div class="rgb-icon-wrapper">
+                <i class="fab fa-instagram"></i>
+            </div>
         </a>
-    </p>
-</footer>
-
-<div id="cerez-kutusu" style="position: fixed; bottom: 20px; left: 20px; right: 20px; background: #2d3436; color: white; padding: 20px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; z-index: 10000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); font-size: 14px; border: 1px solid #444;">
-    <div style="padding-right: 20px;">
-        🍪 <strong>Özel İlgi Anaokulu</strong> olarak, size en iyi deneyimi sunmak için çerezleri kullanıyoruz. Sitemizi kullanmaya devam ederek çerez kullanımını kabul etmiş sayılırsınız.
-    </div>
-    <button onclick="cerezKabulEt()" style="background: #ff9f43; color: white; border: none; padding: 10px 25px; border-radius: 30px; cursor: pointer; font-weight: bold; white-space: nowrap;">Anladım</button>
-</div>
-
-<a href="https://wa.me/905358610525" class="whatsapp-btn" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
-
-<script>
-    if (localStorage.getItem('cerezOnay') === 'tamam') {
-        document.getElementById('cerez-kutusu').style.display = 'none';
-    }
-    function cerezKabulEt() {
-        localStorage.setItem('cerezOnay', 'tamam');
-        document.getElementById('cerez-kutusu').style.display = 'none';
-    }
-</script>
+    </footer>
 
 </body>
 </html>
